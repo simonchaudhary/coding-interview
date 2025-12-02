@@ -1,0 +1,19 @@
+/**
+ * Generic constants that can be reused across the application
+ */
+
+/**
+ * Sort order options for queries
+ */
+export const SORT_ORDER = {
+  ASC: "asc",
+  DESC: "desc",
+} as const;
+
+/**
+ * Debounce delays in milliseconds
+ */
+export const DEBOUNCE_DELAYS = {
+  SEARCH: 300,
+  INPUT: 500,
+} as const;
