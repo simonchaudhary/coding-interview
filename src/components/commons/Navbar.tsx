@@ -1,16 +1,12 @@
-import { useLocation } from "react-router";
 import { User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ROUTES } from "@/constants/routes";
+import { useLocation } from "react-router";
 
-const routeTitles: Record<string, string> = {
-  [ROUTES.home]: "Home",
-  [ROUTES.sushi]: "Sushi Manager",
-};
+import { Button } from "@/components/ui/button";
+import { ROUTE_TITLES } from "@/constants/common";
 
 function Navbar() {
   const location = useLocation();
-  const currentTitle = routeTitles[location.pathname] || "Dashboard";
+  const currentTitle = ROUTE_TITLES[location.pathname] || "Dashboard";
 
   return (
     <nav className="flex flex-1 items-center justify-between">

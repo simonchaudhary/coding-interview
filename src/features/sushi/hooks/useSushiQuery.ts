@@ -1,11 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
 import { useQueryStates } from "nuqs";
+import { useQuery } from "@tanstack/react-query";
 
 import { queryKeys } from "../queryKeys";
-import { fetchSushi, type SushiQueryParams } from "../api/sushi";
-import { filterParsers } from "../lib/filterParsers";
+import { fetchSushi } from "../api/sushi";
 import { FILTER_DEFAULTS } from "../constants";
-import type { SushiType } from "../types";
+import { filterParsers } from "../lib/filterParsers";
+import type { SushiQueryParams, SushiType } from "../types";
 
 /**
  * Hook for fetching the sushi list with filters from URL query parameters

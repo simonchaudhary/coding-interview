@@ -19,6 +19,7 @@ import type { SortOption, TypeOption } from "../types";
 import { SORT_OPTIONS, TYPE_OPTIONS, FILTER_DEFAULTS } from "../constants";
 
 import { filterParsers } from "../lib/filterParsers";
+import { MESSAGES } from "@/constants/messages";
 
 type SushiFilterProps = {
   trailing?: React.ReactNode;
@@ -49,7 +50,11 @@ export function SushiFilter(props: SushiFilterProps) {
   };
 
   const handleReset = () => {
-    setFilters({ search: null, sortBy: FILTER_DEFAULTS.SORT_BY, type: FILTER_DEFAULTS.TYPE });
+    setFilters({
+      search: null,
+      sortBy: FILTER_DEFAULTS.SORT_BY,
+      type: FILTER_DEFAULTS.TYPE,
+    });
   };
 
   const hasActiveFilters =
@@ -108,7 +113,7 @@ export function SushiFilter(props: SushiFilterProps) {
           onClick={handleReset}
           className="w-full sm:w-auto order-5 md:order-4"
         >
-          Reset
+          {MESSAGES.buttons.Reset}
         </Button>
       )}
     </div>

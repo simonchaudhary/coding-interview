@@ -1,4 +1,4 @@
-import type { SushiQueryParams } from "./api/sushi";
+import type { SushiQueryParams } from "./types";
 
 export const queryKeys = {
   all: () => ["sushi"],

@@ -1,33 +1,21 @@
 import { endpoints } from "@/config/endpoints";
 
 import { axiosClient } from "@/lib/axiosClient";
-import { SORT_ORDER } from "@/constants/common";
 
-import type { Sushi, SushiType } from "../types";
 import type { SushiFormValues } from "@/schemas/sushiSchema";
-import type { SortOption } from "../types";
+import type { Sushi, SushiQueryParams } from "../types";
 
 /**
  * Normalizes sushi data to ensure price is a number
  * @param {any} data - Raw sushi data from API
  * @returns {Sushi} Normalized sushi data
  */
-function normalizeSushiData(data: any): Sushi {
+function normalizeSushiData(data: Sushi): Sushi {
   return {
     ...data,
     price: Number(data.price),
   };
 }
-
-/**
- * Query parameters for fetching sushi list
- */
-export type SushiQueryParams = {
-  sortBy?: SortOption;
-  order?: (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
-  search?: string;
-  type?: SushiType;
-};
 
 /**
  * Fetches the sushi list from the API

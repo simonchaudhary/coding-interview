@@ -1,3 +1,4 @@
+import type { SORT_ORDER } from "@/constants/common";
 import { SORT_OPTIONS, TYPE_OPTIONS } from "./constants";
 
 export type SushiType = "Nigiri" | "Roll";
@@ -31,3 +32,13 @@ export type Sushi = Nigiri | Roll;
 // Filter types
 export type SortOption = keyof typeof SORT_OPTIONS;
 export type TypeOption = keyof typeof TYPE_OPTIONS;
+
+/**
+ * Query parameters for fetching sushi list
+ */
+export type SushiQueryParams = {
+  sortBy?: SortOption;
+  order?: (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
+  search?: string;
+  type?: SushiType;
+};

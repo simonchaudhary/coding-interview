@@ -18,8 +18,7 @@ function ErrorState({
   onRetry,
   retryButtonText = "Try Again",
 }: ErrorStateProps) {
-  const errorMessage =
-    error instanceof Error ? error.message : defaultMessage;
+  const errorMessage = error instanceof Error ? error.message : defaultMessage;
 
   return (
     <div className="px-4 max-w-2xl mx-auto">

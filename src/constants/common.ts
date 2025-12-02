@@ -1,6 +1,4 @@
-/**
- * Generic constants that can be reused across the application
- */
+import { ROUTES } from "./routes";
 
 /**
  * Sort order options for queries
@@ -17,3 +15,8 @@ export const DEBOUNCE_DELAYS = {
   SEARCH: 300,
   INPUT: 500,
 } as const;
+
+export const ROUTE_TITLES: Record<string, string> = {
+  [ROUTES.home]: "Home",
+  [ROUTES.sushi]: "Sushi Manager",
+};
