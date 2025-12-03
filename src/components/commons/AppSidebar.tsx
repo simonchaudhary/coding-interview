@@ -35,8 +35,9 @@ function AppSidebar() {
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-4">
-          <UtensilsCrossed className="size-6" />
-          <span className="font-semibold text-lg">{APP_CONFIG.appName}</span>
+          <span className="font-semibold text-2xl text-blue-600">
+            {APP_CONFIG.appName}
+          </span>
         </div>
       </SidebarHeader>
 

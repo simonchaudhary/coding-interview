@@ -6,18 +6,6 @@ import type { SushiFormValues } from "@/schemas/sushiSchema";
 import type { Sushi, SushiQueryParams } from "../types";
 
 /**
- * Normalizes sushi data to ensure price is a number
- * @param {any} data - Raw sushi data from API
- * @returns {Sushi} Normalized sushi data
- */
-function normalizeSushiData(data: Sushi): Sushi {
-  return {
-    ...data,
-    price: Number(data.price),
-  };
-}
-
-/**
  * Fetches the sushi list from the API
  * @param {SushiQueryParams} params - Query parameters for filtering and sorting
  * @param {AbortSignal} signal - Abort signal for canceling the request
@@ -32,7 +20,7 @@ export async function fetchSushi(
     signal,
   });
 
-  return data.map(normalizeSushiData);
+  return data;
 }
 
 /**
@@ -41,9 +29,14 @@ export async function fetchSushi(
  * @returns {Promise<Sushi>} The created sushi item
  */
 export async function createSushi(sushi: SushiFormValues): Promise<Sushi> {
-  const { data } = await axiosClient.post<Sushi>(endpoints.sushi.create, sushi);
+  const payload = {
+    ...sushi,
+    price: Number(sushi.price),
+  };
 
-  return normalizeSushiData(data);
+  const { data } = await axiosClient.post<Sushi>(endpoints.sushi.create, payload);
+
+  return data;
 }
 
 /**
@@ -60,7 +53,7 @@ export async function fetchSushiById(
     signal,
   });
 
-  return normalizeSushiData(data);
+  return data;
 }
 
 /**

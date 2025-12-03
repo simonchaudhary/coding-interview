@@ -80,7 +80,7 @@ function SushiDetail() {
             <div className="space-y-1">
               <p className="text-sm text-muted-foreground">Price</p>
               <p className="font-semibold text-lg text-green-600">
-                ${sushi.price.toFixed(2)}
+                ${Number(sushi?.price)?.toFixed(2)}
               </p>
             </div>
 

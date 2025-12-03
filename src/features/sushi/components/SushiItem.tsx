@@ -84,7 +84,7 @@ function SushiItem(props: SushiItemProps) {
                 <div className="flex justify-between">
                   <span className="text-gray-500">Price</span>
                   <span className="font-semibold text-base text-gray-700">
-                    ${price.toFixed(2)}
+                    ${Number(price)?.toFixed(2)}
                   </span>
                 </div>
               </div>
