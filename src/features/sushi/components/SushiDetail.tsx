@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import { Link, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 import { Button } from "@/components/ui/button";
 import ErrorState from "@/components/commons/ErrorState";
@@ -7,13 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import useSushiDetailQuery from "@/features/sushi/hooks/useSushiDetailQuery";
 
-import { ROUTES } from "@/constants/routes";
 import { MESSAGES } from "@/constants/messages";
 
 import SushiDetailLoading from "./SushiDetailLoading";
 
 function SushiDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const {
     data: sushi,
@@ -46,11 +46,9 @@ function SushiDetail() {
 
   return (
     <div className="container mx-auto space-y-6">
-      <Button asChild variant="ghost" size="sm">
-        <Link to={`/${ROUTES.sushi}`}>
-          <ArrowLeft className="mr-2 size-4" />
-          {MESSAGES.buttons.back}
-        </Link>
+      <Button variant="ghost" size="sm" onClick={() => navigate(-1)}>
+        <ArrowLeft className="mr-2 size-4" />
+        {MESSAGES.buttons.back}
       </Button>
 
       <Card className="max-w-3xl mx-auto">

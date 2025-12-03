@@ -61,7 +61,7 @@ function SushiItem(props: SushiItemProps) {
             <div className="flex-1 space-y-2">
               <h3
                 title={name}
-                className="text-base font-semibold line-clamp-2 text-gray-700"
+                className="text-base font-semibold line-clamp-2 text-gray-700 pr-8"
               >
                 {name}
               </h3>

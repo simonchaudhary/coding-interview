@@ -12,7 +12,7 @@ export const SORT_ORDER = {
  * Debounce delays in milliseconds
  */
 export const DEBOUNCE_DELAYS = {
-  SEARCH: 300,
+  SEARCH: 2000,
   INPUT: 500,
 } as const;
 
