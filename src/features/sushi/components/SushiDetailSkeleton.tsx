@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-function SushiDetailLoading() {
+function SushiDetailSkeleton() {
   return (
     <div className="container mx-auto space-y-6">
       <Skeleton className="h-10 w-32" />
@@ -23,4 +23,4 @@ function SushiDetailLoading() {
   );
 }
 
-export default SushiDetailLoading;
+export default SushiDetailSkeleton;

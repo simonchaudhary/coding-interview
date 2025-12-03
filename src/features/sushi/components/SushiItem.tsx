@@ -1,9 +1,9 @@
 import { X } from "lucide-react";
 import { Link } from "react-router";
 
+import { ROUTES } from "@/constants/routes";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ROUTES } from "@/constants/routes";
 
 import type { Sushi, SushiType } from "../types";
 import { SUSHI_ITEM_LABELS, SUSHI_TYPES } from "../constants";

@@ -9,7 +9,7 @@ import useSushiDetailQuery from "@/features/sushi/hooks/useSushiDetailQuery";
 
 import { MESSAGES } from "@/constants/messages";
 
-import SushiDetailLoading from "./SushiDetailLoading";
+import SushiDetailSkeleton from "./SushiDetailSkeleton";
 
 function SushiDetail() {
   const { id } = useParams<{ id: string }>();
@@ -24,7 +24,7 @@ function SushiDetail() {
   } = useSushiDetailQuery(id!);
 
   if (isLoading) {
-    return <SushiDetailLoading />;
+    return <SushiDetailSkeleton />;
   }
 
   if (isError || !sushi) {

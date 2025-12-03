@@ -36,7 +36,7 @@ export const FILTER_DEFAULTS = {
  * Default values for sushi form
  */
 export const FORM_DEFAULTS = {
-  PRICE: "0.00",
+  PRICE: undefined,
   TYPE: SUSHI_TYPES.NIGIRI,
   NAME: "",
   IMAGE: "",

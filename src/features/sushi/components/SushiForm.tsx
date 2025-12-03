@@ -4,26 +4,24 @@ import { Controller, type SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import {
   Field,
-  FieldDescription,
-  FieldError,
   FieldGroup,
   FieldLabel,
+  FieldError,
+  FieldDescription,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import {
   Select,
-  SelectContent,
   SelectItem,
-  SelectTrigger,
   SelectValue,
+  SelectTrigger,
+  SelectContent,
 } from "@/components/ui/select";
 
-import { MESSAGES } from "@/constants/messages";
-
-import { type SushiFormValues, sushiSchema } from "@/schemas/sushiSchema";
-
-import { useCreateSushi } from "../hooks/useSushiMutation";
 import { useSheet } from "@/stores/useSheet";
+import { MESSAGES } from "@/constants/messages";
+import { useCreateSushi } from "../hooks/useSushiMutation";
+import { type SushiFormValues, sushiSchema } from "@/schemas/sushiSchema";
 import { FORM_DEFAULTS, FORM_PLACEHOLDERS, SUSHI_TYPES } from "../constants";
 
 export function SushiForm() {
@@ -156,10 +154,7 @@ export function SushiForm() {
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="sushi-fish-type">
-                Fish Type{" "}
-                {sushiType === SUSHI_TYPES.NIGIRI && (
-                  <span className="text-red-500">*</span>
-                )}
+                Fish Type <span className="text-red-500">*</span>
               </FieldLabel>
               <Input
                 {...field}
@@ -171,8 +166,8 @@ export function SushiForm() {
               />
               <FieldDescription>
                 {sushiType === SUSHI_TYPES.NIGIRI
-                  ? "Required for Nigiri - specify the fish preparation type."
-                  : "Optional for Roll - specify if applicable."}
+                  ? "Specify the fish preparation type for nigiri."
+                  : "Specify the fish preparation type for rolls."}
               </FieldDescription>
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
@@ -185,12 +180,7 @@ export function SushiForm() {
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="sushi-pieces">
-                Pieces{" "}
-                {sushiType === SUSHI_TYPES.ROLL ? (
-                  <span className="text-red-500">*</span>
-                ) : (
-                  "(Optional)"
-                )}
+                Pieces <span className="text-red-500">*</span>
               </FieldLabel>
               <Input
                 {...field}
@@ -207,17 +197,13 @@ export function SushiForm() {
                 autoComplete="off"
                 onChange={(e) => {
                   const val = e.target.value;
-                  if (sushiType === SUSHI_TYPES.ROLL) {
-                    field.onChange(val === "" ? undefined : Number(val));
-                  } else {
-                    field.onChange(val === "" ? null : Number(val));
-                  }
+                  field.onChange(val === "" ? undefined : Number(val));
                 }}
               />
               <FieldDescription>
                 {sushiType === SUSHI_TYPES.ROLL
-                  ? "Required for Roll - number of pieces in the roll."
-                  : "Optional for Nigiri - leave empty if not applicable."}
+                  ? "Number of pieces in the roll."
+                  : "Number of nigiri pieces served."}
               </FieldDescription>
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
@@ -233,15 +219,19 @@ export function SushiForm() {
               <Input
                 {...field}
                 id="sushi-price"
-                type="text"
+                type="number"
                 inputMode="decimal"
                 aria-invalid={fieldState.invalid}
                 placeholder={FORM_PLACEHOLDERS.PRICE}
                 autoComplete="off"
+                value={field.value ?? ""}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  field.onChange(val === "" ? undefined : Number(val));
+                }}
               />
               <FieldDescription>
-                Enter a numeric amount with up to two decimal places, like
-                19.99.
+                Enter a numeric amount, like 19.99.
               </FieldDescription>
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
@@ -261,7 +251,9 @@ export function SushiForm() {
           </Button>
 
           <Button type="submit" form="sushi-form" disabled={isSubmitting}>
-            {isSubmitting ? MESSAGES.buttons.loading : MESSAGES.buttons.submit}
+            {isSubmitting
+              ? MESSAGES.buttons.loading
+              : MESSAGES.buttons.add("Sushi")}
           </Button>
         </Field>
       </FieldGroup>
