@@ -2,14 +2,14 @@ import type { LucideIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-interface EmptyStateProps {
+type EmptyStateProps = {
   icon?: LucideIcon;
   title: string;
   description: string;
   buttonText?: string;
   onButtonClick?: () => void;
   buttonIcon?: LucideIcon;
-}
+};
 
 function EmptyState({
   icon: Icon,

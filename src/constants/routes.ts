@@ -1,5 +1,8 @@
 export const ROUTES = {
   home: "/",
   sushi: "sushi",
-  sushiDetail: (id: string) => `sushi/${id}`,
+  sushiDetail: {
+    path: "sushi/:id",
+    build: (id: string) => `/sushi/${id}`,
+  },
 } as const;

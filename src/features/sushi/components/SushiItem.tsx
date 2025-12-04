@@ -28,10 +28,10 @@ function renderSecondaryInfo(
   };
 }
 
-interface SushiItemProps {
+type SushiItemProps = {
   item: Sushi;
   onRemove: (id: string) => void;
-}
+};
 
 function SushiItem(props: SushiItemProps) {
   const { item, onRemove } = props;
@@ -50,7 +50,7 @@ function SushiItem(props: SushiItemProps) {
           <X className="w-5 h-5" />
         </Button>
 
-        <Link to={`/${ROUTES.sushiDetail(id)}`} className="block">
+        <Link to={ROUTES.sushiDetail.build(id)} className="block">
           <div className="flex gap-4 hover:opacity-80 transition-opacity">
             <img
               src={image}

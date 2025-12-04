@@ -7,7 +7,7 @@ import EmptyState from "@/components/commons/EmptyState";
 import ErrorState from "@/components/commons/ErrorState";
 
 import SushiItem from "./SushiItem";
-import { SushiForm } from "./SushiForm";
+import SushiForm from "./SushiForm";
 import SushiSkeleton from "./SushiSkeleton";
 import SushiAlertAction from "./SushiAlertAction";
 import useSushiQuery from "../hooks/useSushiQuery";

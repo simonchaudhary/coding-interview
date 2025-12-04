@@ -23,7 +23,7 @@ type SushiFilterProps = {
   trailing?: React.ReactNode;
 };
 
-export function SushiFilter(props: SushiFilterProps) {
+function SushiFilter(props: SushiFilterProps) {
   const { trailing } = props;
 
   const [filters, setFilters] = useQueryStates(filterParsers, {
@@ -116,3 +116,5 @@ export function SushiFilter(props: SushiFilterProps) {
     </div>
   );
 }
+
+export default SushiFilter;

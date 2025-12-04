@@ -24,7 +24,7 @@ import { useCreateSushi } from "../hooks/useSushiMutation";
 import { type SushiFormValues, sushiSchema } from "@/schemas/sushiSchema";
 import { FORM_DEFAULTS, FORM_PLACEHOLDERS, SUSHI_TYPES } from "../constants";
 
-export function SushiForm() {
+function SushiForm() {
   const form = useForm<SushiFormValues>({
     resolver: zodResolver(sushiSchema),
     defaultValues: {
@@ -260,3 +260,5 @@ export function SushiForm() {
     </form>
   );
 }
+
+export default SushiForm;
