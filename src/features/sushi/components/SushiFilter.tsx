@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { useQueryStates, debounce } from "nuqs";
+import { useQueryStates } from "nuqs";
 
 import {
   Select,
@@ -18,6 +18,7 @@ import { SORT_OPTIONS, TYPE_OPTIONS, FILTER_DEFAULTS } from "../constants";
 import { filterParsers } from "../lib/filterParsers";
 import { MESSAGES } from "@/constants/messages";
 import { DEBOUNCE_DELAYS } from "@/constants/common";
+import { useDebounce } from "@/hooks/useDebounce";
 
 type SushiFilterProps = {
   trailing?: React.ReactNode;
@@ -31,12 +32,12 @@ function SushiFilter(props: SushiFilterProps) {
     history: "push",
   });
 
-  const handleSearchChange = (value: string) => {
-    setFilters(
-      { search: value || null },
-      { limitUrlUpdates: debounce(DEBOUNCE_DELAYS.SEARCH) }
-    );
-  };
+  // Debounced search with custom hook
+  const [searchValue, handleSearchChange] = useDebounce(
+    filters.search,
+    (value) => setFilters({ search: value || null }),
+    DEBOUNCE_DELAYS.SEARCH
+  );
 
   const handleSortChange = (value: SortOption) => {
     setFilters({ sortBy: value });
@@ -66,7 +67,7 @@ function SushiFilter(props: SushiFilterProps) {
         <Input
           type="search"
           placeholder="Search"
-          value={filters.search}
+          value={searchValue}
           onChange={(e) => handleSearchChange(e.target.value)}
           className="pl-9 h-9"
         />
